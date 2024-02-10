@@ -2,7 +2,11 @@ import React, { useState } from "react";
 
 const Problem1 = () => {
   const [show, setShow] = useState("all");
+
+  //   State for Sote all user info
   const [allData, setAllData] = useState([{ name: "Enam", status: "Active" }]);
+
+  //State for store Inputs value
   const [name, setName] = useState("");
   const [status, setStatus] = useState("");
 
@@ -10,6 +14,7 @@ const Problem1 = () => {
     setShow(val);
   };
 
+  //  Function for Submit Input From Data
   const handleFromSubmit = (e) => {
     e.preventDefault();
     const newData = { name, status };
@@ -18,6 +23,7 @@ const Problem1 = () => {
     setStatus("");
   };
 
+  //Function for Filter Data Based on Navigation
   const filteredData = () => {
     if (show === "all") {
       const activeTasks = allData.filter((data) => data.status === "Active");
@@ -48,6 +54,7 @@ const Problem1 = () => {
       <div className="row justify-content-center mt-5">
         <h4 className="text-center text-uppercase mb-5">Problem-1</h4>
         <div className="col-6 ">
+          {/* Add on Sumbmit event for handle from submit */}
           <form
             onSubmit={(e) => handleFromSubmit(e)}
             className="row gy-2 gx-3 align-items-center mb-4"
@@ -134,6 +141,7 @@ const Problem1 = () => {
               </tr>
             </thead>
             <tbody>
+              {/* Add Map Function for render user list baed on the navigation */}
               {filteredData().map((data, index) => (
                 <tr key={index}>
                   <td>{data.name}</td>
