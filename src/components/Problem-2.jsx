@@ -22,7 +22,7 @@ const Problem2 = () => {
       const evenContacts = contacts.filter((contact) => contact.id % 2 === 0);
       setContacts(evenContacts);
     } else {
-      fetchContacts(currentPage, false);
+      fetchContacts(currentPage, modalBVisible ? "United States" : "");
     }
   }, [onlyEven]);
 
@@ -66,8 +66,10 @@ const Problem2 = () => {
           countryParam ? `country-contacts/${countryParam}` : "contacts/"
         }?page=${page}`
       );
+
       const data = await response.json();
       setContacts(data.results);
+      console.log(data.results);
     } catch (error) {
       console.error("Error fetching contacts:", error);
     }
